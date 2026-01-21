@@ -19,7 +19,14 @@ SECRET_KEY = 'django-insecure-change-this-in-production-key-here'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'notetakerbackend-production.up.railway.app',
+    'notetakerfrontend-production.up.railway.app',
+    '*.up.railway.app',  # Allow all Railway domains
+    '*',  # Allow all hosts for easier deployment
+]
 
 # Application definition
 INSTALLED_APPS = [
@@ -43,7 +50,8 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # CSRF disabled for API-only backend
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
